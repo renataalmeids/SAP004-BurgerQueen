@@ -9,22 +9,35 @@ import {
   Link
 } from "react-router-dom";
 
-import Home from '../src/components/Home'
+import Home from '../src/components/Home';
+import Register from  './pages/Register';
+import Login from './pages/Login';
+import Kitchen from './pages/Kitchen';
+
 
 
 export default function App() {
   return (
     <Router>
       <Switch>
-        {/* <Route path="/about">
-          <About />
-        </Route>
-        <Route path="/users">
-          <Users />
-        </Route> */}
         <Route exact path= "/">
           <Home />
         </Route>
+        <Route path="/register">
+          <Register />
+        </Route>
+        <Route path="/login">
+          <Login />
+        </Route> 
+        <Route path="/lounge">
+          <Lounge />
+        </Route> 
+        <Route path="/request">
+          <Request />
+        </Route>
+        <Route path="/kitchen">
+          <Kitchen />
+        </Route> 
       </Switch>
     </Router>
   );
