@@ -9,11 +9,11 @@ import {
   Link
 } from "react-router-dom";
 
-import Home from '../src/components/Home';
+
 import Register from  './pages/Register';
 import Login from './pages/Login';
 import Kitchen from './pages/Kitchen';
-
+import Hall from './pages/Hall';
 
 
 export default function App() {
@@ -21,20 +21,14 @@ export default function App() {
     <Router>
       <Switch>
         <Route exact path= "/">
-          <Home />
+          <Login />
         </Route>
         <Route path="/register">
           <Register />
         </Route>
-        <Route path="/login">
-          <Login />
+        <Route path="/hall">
+          <Hall />
         </Route> 
-        <Route path="/lounge">
-          <Lounge />
-        </Route> 
-        <Route path="/request">
-          <Request />
-        </Route>
         <Route path="/kitchen">
           <Kitchen />
         </Route> 
