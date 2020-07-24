@@ -9,7 +9,6 @@ import {
   Link
 } from "react-router-dom";
 
-
 import Register from  './pages/Register';
 import Login from './pages/Login';
 import Kitchen from './pages/Kitchen';
