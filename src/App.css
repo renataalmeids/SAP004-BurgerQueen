@@ -4,30 +4,62 @@
   font-family: 'Montserrat Alternates', sans-serif;
 }
 
-.logo{
-  width: 100px;
+a{
+  text-decoration: none;
 }
 
-.btn{
-  width: 70px;
-  height: 40px;
-  background-color: #983B38;
+.a-register{
   color: white;
-  font-family: 'Montserrat Alternates', sans-serif;
-  border-radius: 10px;
-  border: none;
+}
+
+.a-login{
+  color: black;
+}
+
+.logo{
+  /* mudar tamanho */
+  width: 300px;
+  margin: 40px 0px 40px 0px;
+  float: left;
 }
 
 label{
   display: block;
-  margin: 5px;
+  margin: 10px;
+  font-size: 20px;
 }
 
 .input{
+  /* revizar tamanhos */
+  width: 500px;
+  height: 50px;
   border: 2px solid #983B38;
   border-radius: 8px;
 }
-@media only screen and (min-width: 768px) {
+
+.btn{
+  width: 200px;
+  height: 50px;
+  background-color: #983B38;
+  color: white;
+  font-size: large;
+  font-family: 'Julius Sans One', sans-serif;
+  border-radius: 10px;
+  border: none;
+}
+
+.register-btn{
+  margin-right: 20px;
+}
+
+.p-login{
+  font-size: 25px
+}
+
+.radio-btn{
+  font-size: 25px;
+}
+@media only screen and (max-width: 768px) {
   .main {
     text-align: center;
     font-family: 'Montserrat Alternates', sans-serif;
@@ -46,7 +78,7 @@ label{
   }
 
   .logo{
-    width: 700px;
+    width: 510px;
     margin: 40px 0px 40px 0px;
   }
 
@@ -66,23 +98,10 @@ label{
   .btn{
     width: 200px;
     height: 50px;
-    background-color: #983B38;
-    color: white;
-    font-size: large;
-    font-family: 'Julius Sans One', sans-serif;
-    border-radius: 10px;
-    border: none;
   }
   
   .register-btn{
     margin-right: 20px;
   }
   
-  .p-login{
-    font-size: 25px
-  }
-
-  .radio-btn{
-    font-size: 25px;
-  }
 };
