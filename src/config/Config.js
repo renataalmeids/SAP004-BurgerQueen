@@ -1,3 +1,5 @@
+import React from 'react';
+
 const firebaseConfig = {
     apiKey: "AIzaSyDKgyumyFgj8t4jVAuCNoLNEJzIddIAFlo",
     authDomain: "burger-queen-407c9.firebaseapp.com",
