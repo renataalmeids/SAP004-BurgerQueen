@@ -1,21 +1,40 @@
-import React from 'react';
+
+import React, {useState} from 'react';
+import Form from '../components/Form';
 import logo from '../burguer_queen.png';
 import '../App.css';
-const Login = () => {
-    return (
-        <main className='main'>
-            <img src={logo} alt='' className='logo'></img>
-            <form className='form-login'>
-                <label htmlfor='email'>
-                    <input type='email' placeholder='Email:' className='input input-email'></input>
-                </label>
-                <label htmlfor='password'>
-                    <input type='password' placeholder='Senha:' className='input input-senha'></input>
-                </label>
-                <button className='enter-btn btn'>Entrar</button>
-                <p className='p-login'>Ainda não tem uma conta?<a classNmae='a-login' href='/Register'>Cadastre-se</a></p>
-            </form>
-        </main>
-    );
-}
-export default Login;
+import authErrors from '../pages/authErrors';
+import firebase from '../config/Config';
+
+
+
+    const Login = () => {
+        const [email, setEmail] = useState();
+        const [password, setPassword] = useState();
+        const [errorMsg, setErrorMsg] = useState();
+    
+        function loginUser(e) {
+            e.preventDefault()
+            console.log(email, password)
+            firebase
+                .auth()
+                .signInWithEmailAndPassword(email, password)
+                .then()
+                .catch()
+        };
+    
+        return (
+            <main className='main'>
+                <img src={logo} alt='' className='logo'></img>
+                <Form 
+                    onChangeEmail={(event) => setEmail(event.target.value)} 
+                    onChangePassword={(event) => setPassword(event.target.value)}
+                    onclick= {loginUser}
+                />
+                </main>
+        );
+    }
+
+
+
+    export default Login;

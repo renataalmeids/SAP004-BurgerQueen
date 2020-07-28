@@ -1,7 +1,7 @@
 // import React from 'react';
 import React, { useCallback } from "react";
 // import { withRouter } from "react-router";
-import firebaseConfig from "../Config";
+import firebase from '../config/Config';
 import logo from '../burguer_queen.png';
 import '../App.css';
 import Button from '../componentes/Button';
@@ -11,7 +11,7 @@ const SignUp = ({history}) => {
         event.preventDefault();
         const { email, password } = event.target.elements;
     try {
-        await firebaseConfig.auth().createUserWithEmailAndPassword(email.value, password.value)
+        await firebase.auth().createUserWithEmailAndPassword(email.value, password.value)
         alert('login criado com sucesso');
         // await app.firestore().collection('departament').set()
         history.push("/");
@@ -47,7 +47,6 @@ const SignUp = ({history}) => {
                     <Button className='register-btn btn' name='Registrar'/>
                 </form>
                 <a className= 'a-register' href='/'><button className='back-btn btn'>Voltar</button></a>
-
             </main>
         )
     // };
