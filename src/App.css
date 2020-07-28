@@ -1,7 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates&display=swap');
 .main {
+  display: flex;
   text-align: center;
   font-family: 'Montserrat Alternates', sans-serif;
+  /* margin: 10% 0% 0% 10%; */
+  margin: 10% 11% 0% 11%;
 }
 
 a{
@@ -17,10 +20,9 @@ a{
 }
 
 .logo{
-  /* mudar tamanho */
-  width: 300px;
-  margin: 40px 0px 40px 0px;
-  float: left;
+  width: 400px;
+  height: 291px;
+  /* margin: 0px 40px 0px 40px; */
 }
 
 label{
@@ -30,7 +32,6 @@ label{
 }
 
 .input{
-  /* revizar tamanhos */
   width: 500px;
   height: 50px;
   border: 2px solid #983B38;
@@ -38,6 +39,7 @@ label{
 }
 
 .btn{
+  margin: 5px;
   width: 200px;
   height: 50px;
   background-color: #983B38;
@@ -46,10 +48,6 @@ label{
   font-family: 'Julius Sans One', sans-serif;
   border-radius: 10px;
   border: none;
-}
-
-.register-btn{
-  margin-right: 20px;
 }
 
 .p-login{
@@ -61,6 +59,8 @@ label{
 }
 @media only screen and (max-width: 768px) {
   .main {
+    margin: 0px;
+    display: block;
     text-align: center;
     font-family: 'Montserrat Alternates', sans-serif;
   }
@@ -78,7 +78,8 @@ label{
   }
 
   .logo{
-    width: 510px;
+    width: 700px;
+    height: 510px;
     margin: 40px 0px 40px 0px;
   }
 
@@ -100,8 +101,10 @@ label{
     height: 50px;
   }
   
-  .register-btn{
-    margin-right: 20px;
+  .p-login{
+    font-size: 25px
   }
-  
+  .radio-btn{
+    font-size: 25px;
+  }
 };
