@@ -1,14 +1,12 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import firebase from './Config';
+import firebase from './config/Config';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link
 } from "react-router-dom";
-
 import Register from  './pages/Register';
 import Login from './pages/Login';
 import Kitchen from './pages/Kitchen';
