@@ -1,34 +1,66 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates&display=swap');
 .main {
+  display: flex;
   text-align: center;
   font-family: 'Montserrat Alternates', sans-serif;
+  /* margin: 10% 0% 0% 10%; */
+  margin: 10% 11% 0% 11%;
+}
+
+a{
+  text-decoration: none;
+}
+
+.a-register{
+  color: white;
+}
+
+.a-login{
+  color: black;
 }
 
 .logo{
-  width: 100px;
-}
-
-.btn{
-  width: 70px;
-  height: 40px;
-  background-color: #983B38;
-  color: white;
-  font-family: 'Montserrat Alternates', sans-serif;
-  border-radius: 10px;
-  border: none;
+  width: 400px;
+  height: 291px;
+  /* margin: 0px 40px 0px 40px; */
 }
 
 label{
   display: block;
-  margin: 5px;
+  margin: 10px;
+  font-size: 20px;
 }
 
 .input{
+  width: 500px;
+  height: 50px;
   border: 2px solid #983B38;
   border-radius: 8px;
 }
-@media only screen and (min-width: 768px) {
+
+.btn{
+  margin: 5px;
+  width: 200px;
+  height: 50px;
+  background-color: #983B38;
+  color: white;
+  font-size: large;
+  font-family: 'Julius Sans One', sans-serif;
+  border-radius: 10px;
+  border: none;
+}
+
+.p-login{
+  font-size: 25px
+}
+
+.radio-btn{
+  font-size: 25px;
+}
+@media only screen and (max-width: 768px) {
   .main {
+    margin: 0px;
+    display: block;
     text-align: center;
     font-family: 'Montserrat Alternates', sans-serif;
   }
@@ -47,6 +79,7 @@ label{
 
   .logo{
     width: 700px;
+    height: 510px;
     margin: 40px 0px 40px 0px;
   }
 
@@ -66,22 +99,11 @@ label{
   .btn{
     width: 200px;
     height: 50px;
-    background-color: #983B38;
-    color: white;
-    font-size: large;
-    font-family: 'Julius Sans One', sans-serif;
-    border-radius: 10px;
-    border: none;
-  }
-  
-  .register-btn{
-    margin-right: 20px;
   }
   
   .p-login{
     font-size: 25px
   }
-
   .radio-btn{
     font-size: 25px;
   }
