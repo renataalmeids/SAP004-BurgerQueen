@@ -36,7 +36,7 @@ const Login = () => {
                 onChangeErrorMsg={(event) => setErrorMsg(event.target.value)}
                 onclick={loginUser}
             />
-
+            <a className= 'a-register' href='/Register'><button className='back-btn btn'>Registre-se</button></a>
             <div>
                 {errorMsg}
             </div>
