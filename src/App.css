@@ -3,7 +3,6 @@
   display: flex;
   text-align: center;
   font-family: 'Montserrat Alternates', sans-serif;
-  /* margin: 10% 0% 0% 10%; */
   margin: 10% 11% 0% 11%;
 }
 
@@ -22,7 +21,6 @@ a{
 .logo{
   width: 400px;
   height: 291px;
-  /* margin: 0px 40px 0px 40px; */
 }
 
 label{
@@ -65,46 +63,10 @@ label{
     font-family: 'Montserrat Alternates', sans-serif;
   }
   
-  a{
-    text-decoration: none;
-  }
-
-  .a-register{
-    color: white;
-  }
-  
-  .a-login{
-    color: black;
-  }
-
   .logo{
     width: 700px;
     height: 510px;
     margin: 40px 0px 40px 0px;
   }
 
-  label{
-    display: block;
-    margin: 10px;
-    font-size: 20px;
-  }
-  
-  .input{
-    width: 500px;
-    height: 50px;
-    border: 2px solid #983B38;
-    border-radius: 8px;
-  }
-  
-  .btn{
-    width: 200px;
-    height: 50px;
-  }
-  
-  .p-login{
-    font-size: 25px
-  }
-  .radio-btn{
-    font-size: 25px;
-  }
 };

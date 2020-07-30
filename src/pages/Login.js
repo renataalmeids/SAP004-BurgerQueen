@@ -5,6 +5,7 @@ import logo from '../burguer_queen.png';
 import '../App.css';
 import authErrors from '../pages/authErrors';
 import firebase from '../config/Config';
+import Button from '../componentes/Button';
 
 
 
@@ -31,6 +32,7 @@ import firebase from '../config/Config';
                     onChangePassword={(event) => setPassword(event.target.value)}
                     onclick= {loginUser}
                 />
+                <a href='/register'> <Button className='btn-register btn' name='Cadastre-se'/></a>
                 </main>
         );
     }
