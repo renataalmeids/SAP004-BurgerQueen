@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import firebase from './config/Config';
+// import firebase from './config/Config';
 import {
   BrowserRouter as Router,
   Switch,
