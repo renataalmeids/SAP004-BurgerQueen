@@ -1,11 +1,11 @@
 import React from 'react';
+import Routes from './routes';
 import './App.css';
 // import firebase from './config/Config';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
 } from "react-router-dom";
 import Register from  './pages/Register';
 import Login from './pages/Login';
