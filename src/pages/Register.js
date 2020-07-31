@@ -5,17 +5,25 @@ import firebase from '../config/Config';
 import logo from '../burguer_queen.png';
 import '../App.css';
 import Button from '../componentes/Button';
+import 'firebase/firestore'
 
 const SignUp = ({history}) => {
     const handleSignUp = useCallback(async event => {
         event.preventDefault();
-        const { email, password } = event.target.elements;
+        const { nome, department, email, password } = event.target.elements;
     try {
         await firebase.auth().createUserWithEmailAndPassword(email.value, password.value)
         alert('login criado com sucesso');
-        // await app.firestore().collection('departament').set()
-        history.push("/");
+        let database = firebase.firestore()
+        console.log(database)
+        await database.collection('department').add({
+            nome: nome.value,
+            email: email.value,
+            departamento: department.value
+        })
+        history.push(`/${department}`);
     } catch (error) {
+        console.log(error)
         alert(error);
     }
     }, 
