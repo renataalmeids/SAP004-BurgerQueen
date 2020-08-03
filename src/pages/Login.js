@@ -4,7 +4,6 @@ import logo from '../burguer_queen.png';
 import '../App.css';
 import authErrors from '../pages/authErrors';
 import firebase from '../config/Config';
-import Button from '../componentes/Button';
 
 const Login = () => {
     const [email, setEmail] = useState();
@@ -44,7 +43,5 @@ const Login = () => {
         </main>
     );
 }
-
-
 
 export default Login;

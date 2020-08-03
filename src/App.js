@@ -1,11 +1,10 @@
 import React from 'react';
 import './App.css';
-// import firebase from './config/Config';
+import PrivateRoute from "./pages/PrivateRoute";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
 } from "react-router-dom";
 import Register from  './pages/Register';
 import Login from './pages/Login';
@@ -23,12 +22,8 @@ export default function App() {
         <Route path="/register">
           <Register />
         </Route>
-        <Route path="/hall">
-          <Hall />
-        </Route> 
-        <Route path="/kitchen">
-          <Kitchen />
-        </Route> 
+        <PrivateRoute exact path="/hall" component={Hall} />
+        <PrivateRoute exact path="/kitchen" component={Kitchen} />
       </Switch>
     </Router>
   );
