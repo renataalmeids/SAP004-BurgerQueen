@@ -1,11 +1,14 @@
-// import React from 'react';
 import React, { useCallback } from "react";
-// import { withRouter } from "react-router";
+import { Link } from 'react-router-dom';
 import firebase from '../config/Config';
 import logo from '../burguer_queen.png';
 import '../App.css';
-import Button from '../componentes/Button';
 import 'firebase/firestore'
+import authErrors from '../pages/authErrors';
+import Button from '../components/Button';
+import Input from '../components/Input';
+
+
 
 const SignUp = ({history}) => {
     const handleSignUp = useCallback(async event => {
@@ -15,49 +18,48 @@ const SignUp = ({history}) => {
         await firebase.auth().createUserWithEmailAndPassword(email.value, password.value)
         alert('login criado com sucesso');
         let database = firebase.firestore()
-        console.log(database)
         await database.collection('department').add({
             nome: nome.value,
             email: email.value,
             departamento: department.value
         })
-        history.push(`/${department}`);
+        history.push(`/hall`);
     } catch (error) {
-        console.log(error)
-        alert(error);
+        alert(authErrors);
     }
     }, 
     [history]
     );
 
-    // const Register = () => {
-        return (
-            <main className='main'>
-                <img src={logo} alt='' className='logo'></img>
-                <form className='form-register'  onSubmit={handleSignUp}>
-                    <label htmlfor='name'>
-                        <input name='nome' type='nome' placeholder='Nome:' className='input input-nome'></input>
-                    </label>
-                    <label htmlfor='email'>
-                        <input name='email' type='email' placeholder='Email:' className='input input-email'></input>
-                    </label>
-                    <label htmlfor='password'>
-                        <input name='password' type='password' placeholder='Senha:' className='input input-senha'></input>
-                    </label>
-                    <label htmlfor='radio-kitchen' className='radio-btn'>
-                        <input type='radio'  name='department' value='kitchen' />
-                        Cozinha
-                    </label>
-                    <label htmlfor='radio-hall' className='radio-btn'>
-                        <input type='radio'  name='department' value='hall' />
-                        Salão
-                    </label>
-                    <Button className='register-btn btn' name='Registrar'/>
-                </form>
-                <a className= 'a-register' href='/'><button className='back-btn btn'>Voltar</button></a>
-            </main>
-        )
-    // };
+    return (
+        <main className='main'>
+            <img src={logo} alt='' className='logo'></img>
+            <form className='form-register' onSubmit={handleSignUp}>
+                <label htmlFor='name'>
+                    <Input name='nome' type='nome' placeholder='Nome:' className='input input-nome' />
+                </label>
+                <label htmlFor='email'>
+                    <Input name='email' type='email' placeholder='Email:' className='input input-emai'/>
+                </label>
+                <label htmlFor='password'>
+                    <Input name='password' type='password' placeholder='Senha:' className='input input-senha'/>
+                </label>
+                <label htmlFor='radio-kitchen' className='radio-btn'>
+                    <Input name='department' type='radio' value='kitchen'/>
+                    Cozinha
+                </label>
+                <label htmlFor='radio-hall' className='radio-btn'>
+                    <Input name='department' type='radio' value='hall'/>
+                    Salão
+                </label>
+                <Button className='register-btn btn' name='Registrar'/>
+            </form>
+            <a className= 'a-register' href='/'><Button className='back-btn btn' name='Voltar'/></a>
+            {/* <div>
+                {errorMsg}
+            </div> */}
+        </main>
+    )
 
 };
 

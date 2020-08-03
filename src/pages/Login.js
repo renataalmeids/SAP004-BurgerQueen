@@ -4,7 +4,6 @@ import logo from '../burguer_queen.png';
 import '../App.css';
 import authErrors from '../pages/authErrors';
 import firebase from '../config/Config';
-import Button from '../componentes/Button';
 
 const Login = () => {
     const [email, setEmail] = useState();
@@ -36,7 +35,7 @@ const Login = () => {
                 onChangeErrorMsg={(event) => setErrorMsg(event.target.value)}
                 onclick={loginUser}
             />
-
+            <a className= 'a-register' href='/Register'><button className='back-btn btn'>Registre-se</button></a>
             <div>
                 {errorMsg}
             </div>
@@ -44,7 +43,5 @@ const Login = () => {
         </main>
     );
 }
-
-
 
 export default Login;
