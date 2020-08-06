@@ -1,5 +1,5 @@
 import React, { useCallback } from "react";
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import firebase from '../config/Config';
 import logo from '../burguer_queen.png';
 import '../App.css';
