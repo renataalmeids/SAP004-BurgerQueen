@@ -1,10 +1,17 @@
 import React from 'react';
+import firebase from '../config/Config'
+import Button from '../components/Button';
+
 
 const Kitchen = () => {
+    const logout = () => {firebase.auth().signOut();}
     return (
-        <div>
-            <h1>Kitchen</h1>
-        </div>
+        <main>
+            <div>
+                <Button onclick={logout} name='Sair'/>
+                <h1>Kitchen</h1>
+            </div>
+        </main>
     )
 }
 

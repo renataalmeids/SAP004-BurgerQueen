@@ -1,30 +1,44 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
+import firebase from './config/Config'
 import './App.css';
 import PrivateRoute from "./pages/PrivateRoute";
 import {
   BrowserRouter as Router,
-  Switch,
-  Route,
+  Route, Redirect
 } from "react-router-dom";
 import Register from  './pages/Register';
 import Login from './pages/Login';
 import Kitchen from './pages/Kitchen';
 import Hall from './pages/Hall';
-
+import AuthProvider from './pages/Auth'
 
 export default function App() {
+
+  const [user, setUser] = useState();
+  useEffect(()=>{
+    firebase.auth()
+    .onAuthStateChanged(user =>{
+      user ? firebase.firestore().collection('department').where('uid', '==', user.uid).onSnapshot((querySnapshot)=>{
+        querySnapshot.forEach(doc => {
+          setUser(doc.data())
+        });
+      })
+      : setUser();
+    })
+
+  },[])
+
   return (
-    <Router>
-      <Switch>
-        <Route exact path= "/">
-          <Login />
-        </Route>
-        <Route path="/register">
-          <Register />
-        </Route>
-        <PrivateRoute exact path="/hall" component={Hall} />
-        <PrivateRoute exact path="/kitchen" component={Kitchen} />
-      </Switch>
-    </Router>
+    <AuthProvider>
+      <Router>
+        {user ? <Redirect to={user.departamento} /> : <Redirect to={'/'} />} 
+        <React.Fragment>
+          <PrivateRoute exact path="/hall" component={Hall} />
+          <PrivateRoute exact path="/kitchen" component={Kitchen} />
+          <Route exact path= "/" component={Login}/>
+          <Route path="/register" component={Register}/>
+        </React.Fragment>
+      </Router>
+    </AuthProvider>
   );
 }
