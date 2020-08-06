@@ -1,12 +1,11 @@
 import React, { useCallback } from "react";
-import { Link } from 'react-router-dom';
 import firebase from '../config/Config';
 import logo from '../burguer_queen.png';
 import '../App.css';
 import 'firebase/firestore'
-import authErrors from '../pages/authErrors';
 import Button from '../components/Button';
 import Input from '../components/Input';
+import authErrors from "./authErrors";
 
 
 
@@ -17,15 +16,22 @@ const SignUp = ({history}) => {
     try {
         await firebase.auth().createUserWithEmailAndPassword(email.value, password.value)
         alert('login criado com sucesso');
+        const uid = firebase.auth().currentUser.uid
         let database = firebase.firestore()
         await database.collection('department').add({
+            uid: uid,
             nome: nome.value,
             email: email.value,
             departamento: department.value
-        })
-        history.push(`/hall`);
+        });
+        history.push(`/${department.value}`);
     } catch (error) {
-        alert(authErrors);
+        let errorMsg = error.code
+        if (authErrors[errorMsg]) {
+            alert(authErrors[errorMsg])
+        } else {
+            alert(errorMsg)
+        }
     }
     }, 
     [history]
