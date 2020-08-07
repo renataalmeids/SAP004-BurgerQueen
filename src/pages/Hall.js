@@ -6,23 +6,32 @@ import Input from '../components/Input';
 import './Hall.css';
 
 const Hall = () => {
+    const [client, setClient] = useState('');
+    const [table, setTable] = useState('');
+    const [product, setProduct] = useState([]);
+    const [listMenuBreakfast, setListMenuBreakfast] = useState(null);
+    const [listMenuAllDay, setListMenuAllDay] = useState(null);
+    
+    
     const logout = () => {firebase.auth().signOut();}
     const renderAllDay = () =>{
         firebase.firestore().collection('menu-p-dia').onSnapshot(itemMenu=>{
             itemMenu.forEach(doc =>{(setListMenuAllDay(doc.data()))})
         })
     };
-    const renderOrder = (itemMenu) =>{
-        setProduct([...product, itemMenu])
-        
-    }
     const renderBreakfast = () =>{
         firebase.firestore().collection('menu-manhã').onSnapshot(itemMenu=>{
             itemMenu.forEach(doc =>{(setListMenuBreakfast(doc.data()))})
         })
     };
-    const [client, setClient] = useState('');
-    const [table, setTable] = useState('');
+    const renderOrder = (itemMenu) =>{
+        if(product.map(elem => elem.name !== itemMenu.name )){
+            setProduct([...product, itemMenu]);
+        }else{
+            setProduct([...product, itemMenu]);
+        }
+        
+    }
     const updateOrder = () =>{
         if(client && table != null){
             alert('funfou o  botão')
@@ -31,17 +40,18 @@ const Hall = () => {
                 mesa: table,
                 pedido:product
             });
+            setProduct([]);
+            setTable('');
+            setClient('');
         }
         else{
             alert('Por favor, insira o nome da mesa e do cliente')
         }
-        setProduct([]) 
-        setTable('')
-        setClient('');
     }
-    const [product, setProduct] = useState([]);
-    const [listMenuBreakfast, setListMenuBreakfast] = useState(null);
-    const [listMenuAllDay, setListMenuAllDay] = useState(null);
+    const delOrder = item =>{
+        const removeItem = product.map(elem => elem.name !== item.name );
+        setProduct([...removeItem]);
+    }
 
     return (
         <main className='main-hall'>
@@ -104,15 +114,18 @@ const Hall = () => {
                 <p>Pedido</p>
                 <label htmlFor='input-client'>
                     Cliente:
-                    <Input type='text' name='input-client' onChange={(event) => setClient(event.target.value)}/>
+                    <Input type='text' name='input-client' value={client} onChange={(event) => setClient(event.target.value)}/>
                 </label>
                 <label htmlFor='input-client'>
                     Mesa:
-                    <Input type='number' name='input-client' onChange={(event) => setTable(event.target.value)}/>
+                    <Input type='number' name='input-client' value={table} onChange={(event) => setTable(event.target.value)}/>
                 </label>
                 <Button className='btn-menu' onclick={updateOrder} name='Finalizar Pedido'/>
-                {product && product.map(produc => (
-                    <div key={produc.name}> <p >{produc.name}, R${produc.price},00</p> <Button name='del'/> </div>
+                {product && product.map(order => (
+                    <div key={order.name} id={order.id}> 
+                        <p>{order.name} {order.price}</p> 
+                        <Button key={order.name} className='btn-del' key={order.name} onclick={()=>delOrder(order)} name='🗑️'/> 
+                    </div>
                 ))}
             </div>
 
