@@ -8,7 +8,6 @@ import Input from '../components/Input';
 import authErrors from "./authErrors";
 
 
-
 const SignUp = ({history}) => {
     const handleSignUp = useCallback(async event => {
         event.preventDefault();
@@ -37,6 +36,10 @@ const SignUp = ({history}) => {
     [history]
     );
 
+    const renderBack = () => {
+        history.push('/')
+    }
+
     return (
         <main className='main'>
             <img src={logo} alt='' className='logo'></img>
@@ -59,11 +62,8 @@ const SignUp = ({history}) => {
                     Salão
                 </label>
                 <Button className='register-btn btn' name='Registrar'/>
+                <Button className='back-btn btn' name='Voltar' onclick={()=>renderBack()}/>
             </form>
-            <a className= 'a-register' href='/'><Button className='back-btn btn' name='Voltar'/></a>
-            {/* <div>
-                {errorMsg}
-            </div> */}
         </main>
     )
 

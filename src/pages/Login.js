@@ -7,15 +7,12 @@ import firebase from '../config/Config';
 import { useHistory } from 'react-router-dom';
 
 const Login = () => {
+    const renderRegister = () =>{
+        history.push('/Register')
+    }
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     const [errorMsg, setErrorMsg] = useState();
-    const department = firebase.firestore().collection('department').get().then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-            // console.log(doc.data().uid, doc.data().departamento);
-            return(doc.data().uid, doc.data().departamento)
-        });
-    });
 
     const history = useHistory();
     function loginUser(e) {
@@ -41,8 +38,8 @@ const Login = () => {
                 onChangePassword={(event) => setPassword(event.target.value)}
                 onChangeErrorMsg={(event) => setErrorMsg(event.target.value)}
                 onclick={loginUser}
+                onclickRegister={()=>renderRegister()}
             />
-            <a className= 'a-register' href='/Register'><button className='back-btn btn'>Registre-se</button></a>
             <div>
                 {errorMsg}
             </div>
