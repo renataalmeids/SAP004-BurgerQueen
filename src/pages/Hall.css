@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates&display=swap');
+.main-hall {
+    display: contents;
+    font-family: 'Montserrat Alternates', sans-serif;
+}
+.btn-menu, .btn-sair{
+    font-family: 'Montserrat Alternates', sans-serif;
+    border: none;
+    background-color: #f95d599e;
+}
+.btn-itens{
+    font-family: 'Montserrat Alternates', sans-serif;
+    margin: 3px;
+}
+.entire-menu{
+    display: block;
+}
+.itens-all-day, .itens-breakfast{
+    display: inline-grid;
+    margin: 0px 5px 0px 5px;
+}
+label{
+    font-size: 15px;
+}
