@@ -4,18 +4,25 @@ import logo from '../burguer_queen.png';
 import '../App.css';
 import authErrors from '../pages/authErrors';
 import firebase from '../config/Config';
+import { useHistory } from 'react-router-dom';
 
 const Login = () => {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     const [errorMsg, setErrorMsg] = useState();
-  
+    const department = firebase.firestore().collection('department').get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            // console.log(doc.data().uid, doc.data().departamento);
+            return(doc.data().uid, doc.data().departamento)
+        });
+    });
+
+    const history = useHistory();
     function loginUser(e) {
         e.preventDefault()
         firebase
             .auth()
             .signInWithEmailAndPassword(email, password)
-            .then()
             .catch(function (error) {
                 let errorMsg = error.code
                 if (authErrors[errorMsg]) {
