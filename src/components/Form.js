@@ -12,6 +12,7 @@ const Form = (props) => {
             <Input className='input input-senha' placeholder='Senha:' type= 'password' onChange={props.onChangePassword}/>
             </label>
             <Button onclick={props.onclick} className='enter-btn btn' name= 'Entrar' />
+            <Button onclick={props.onclickRegister} className='register-btn btn' name='Registre-se' />
         </form>
     );
 }
