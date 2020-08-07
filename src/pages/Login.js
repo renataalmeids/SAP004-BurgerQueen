@@ -10,12 +10,6 @@ const Login = () => {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     const [errorMsg, setErrorMsg] = useState();
-    const department = firebase.firestore().collection('department').get().then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-            // console.log(doc.data().uid, doc.data().departamento);
-            return(doc.data().uid, doc.data().departamento)
-        });
-    });
 
     const history = useHistory();
     function loginUser(e) {

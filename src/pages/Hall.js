@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import firebase from '../config/Config'
 import ButtonHall from '../components/ButtonHall'
-import { render } from '@testing-library/react';
 import Button from '../components/Button';
 
 const Hall = () => {
