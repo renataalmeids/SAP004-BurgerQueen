@@ -3,13 +3,18 @@
     display: contents;
     font-family: 'Montserrat Alternates', sans-serif;
 }
-.btn-menu, .btn-sair{
+button{
     font-family: 'Montserrat Alternates', sans-serif;
+    border: none;
+}
+.btn-menu, .btn-sair{
     border: none;
     background-color: #f95d599e;
 }
+.btn-del{
+    background-color: white;
+}
 .btn-itens{
-    font-family: 'Montserrat Alternates', sans-serif;
     margin: 3px;
 }
 .entire-menu{
