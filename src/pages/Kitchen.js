@@ -12,7 +12,7 @@ const Kitchen = () => {
     useEffect(() => {
         const pedding = []
         firebase.firestore().collection('pedidos')
-            .get().then((querySnapshot) => {
+            .onSnapshot((querySnapshot) => {
                 querySnapshot.forEach(doc => {
                     pedding.push({
                         id: doc.id,

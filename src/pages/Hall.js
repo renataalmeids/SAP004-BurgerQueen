@@ -1,13 +1,6 @@
-<<<<<<< HEAD
-import React, { useEffect, useState } from 'react';
-import firebase from '../config/Config'
-import ButtonHall from '../components/ButtonHall'
-// import { render } from '@testing-library/react';
-=======
 import React, { useState } from 'react';
 import firebase from '../config/Config';
 import ButtonHall from '../components/ButtonHall';
->>>>>>> 36894e986f9818159fba8796268a577566796d5c
 import Button from '../components/Button';
 import Input from '../components/Input';
 import './Hall.css';
