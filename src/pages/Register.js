@@ -2,7 +2,7 @@ import React, { useCallback } from "react";
 import firebase from '../config/Config';
 import logo from '../burguer_queen.png';
 import '../App.css';
-import 'firebase/firestore'
+import 'firebase/firestore';
 import Button from '../components/Button';
 import Input from '../components/Input';
 import authErrors from "./authErrors";

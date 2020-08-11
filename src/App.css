@@ -35,7 +35,8 @@ label{
   border: 2px solid #983B38;
   border-radius: 8px;
 }
-
+.doing-btn,
+.done-btn,
 .btn{
   margin: 5px;
   width: 200px;
@@ -56,6 +57,7 @@ label{
   font-size: 25px;
 }
 @media only screen and (max-width: 760px) {
+
   .main {
     margin: 0px;
     display: contents;
