@@ -1,24 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates&display=swap');
 .main-hall {
-    display: contents;
+    text-align: center;
     font-family: 'Montserrat Alternates', sans-serif;
 }
 button{
     font-family: 'Montserrat Alternates', sans-serif;
     border: none;
 }
-.btn-menu, .btn-sair{
-    border: none;
+.btn-menu{
+    width: 230px;
+    height: 20px;
     background-color: #f95d599e;
 }
-.btn-del{
-    background-color: white;
+.btn-sair{
+    display: block;
+}
+.btn-order, .btn-sair{
+    background-color: #f95d599e;
 }
 .btn-itens{
-    margin: 3px;
-}
-.entire-menu{
-    display: block;
+    width: 230px;
+    height: 20px;
+    margin: 2px 0px 2px 0px;
 }
 .itens-all-day, .itens-breakfast{
     display: inline-grid;
@@ -26,4 +29,19 @@ button{
 }
 label{
     font-size: 15px;
+}
+.entire-menu{
+    display: contents;
+}
+.order{
+    display: inline-grid;
+    background-color:#d4d1d15e;
+    width: 400px;
+}
+.title-order{
+    text-align: center;
+}
+.burger-type{
+    background-color: lightgray;
+    display: none;
 }
