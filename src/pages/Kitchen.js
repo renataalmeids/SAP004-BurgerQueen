@@ -1,30 +1,41 @@
 import React, { useEffect, useState } from 'react';
-import firebase from '../config/Config'
+import firebase from '../config/Config';
 import Button from '../components/Button';
+import Card from '../components/Card';
+
 
 
 const Kitchen = () => {
-    const logout = () => {firebase.auth().signOut();}
-
+    const logout = () => { firebase.auth().signOut(); }
     const [orders, setOrders] = useState([]);
+
     useEffect(() => {
-        firebase.firestore().collection('pedidos').onSnapshot(itemMenu=>{
-            itemMenu.forEach(doc =>{(setOrders(doc.data()))})
-        })
-    });
+        const pedding = []
+        firebase.firestore().collection('pedidos')
+            .get().then((querySnapshot) => {
+                querySnapshot.forEach(doc => {
+                    pedding.push({
+                        id: doc.id,
+                        ...doc.data()
+                    })
+                })
+                console.log(pedding)
+                setOrders(pedding)
+            })
+    }, [])
+
+
 
     return (
-        <main>
-            <div>
-                <Button onclick={logout} name='Sair'/>
-                <h1>Kitchen</h1>
+        <main className='main-kitchen'>
+            <Button onclick={logout} name='Sair' />
+            <h1>Kitchen</h1>
+            <div className="lista-de-pedidos">
+                {orders.map((item, index) =>
+                    <Card key={index} pedido={item} pedidosState={orders} />
+                )}
             </div>
-            <div>
-                <h2 className= 'order'>Pedido a ser preparado</h2>
-            </div>
-            <div>
-                <h2 className= 'order'>Pedido pronto</h2>
-            </div>
+            {/* <button  className={'btn-status'} onClick={props.handleClick}>Marcar como Pronto</button> */}
         </main>
     )
 }
