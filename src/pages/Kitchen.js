@@ -9,6 +9,7 @@ const Kitchen = () => {
     const logout = () => { firebase.auth().signOut(); }
     const [orders, setOrders] = useState([]);
 
+
     useEffect(() => {
         const pedding = []
         firebase.firestore().collection('pedidos')
@@ -19,11 +20,21 @@ const Kitchen = () => {
                         ...doc.data()
                     })
                 })
-                console.log(pedding)
+                console.log(pedding)//deletar console
                 setOrders(pedding)
             })
     }, [])
 
+    const ordersStatus = doc => {
+        firebase.
+            firestore()
+            .collection("pedidos")
+            .doc(doc.id)
+            .update({
+                status: "Entregue"
+            });
+        setOrders(pedido.filter(item => item.id !== doc.id));
+    };
 
 
     return (

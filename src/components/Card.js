@@ -1,4 +1,6 @@
 import React from 'react';
+import Button from '../components/Button';
+
 
 const Cardkitchen = (props) => {
 
@@ -9,7 +11,7 @@ const Cardkitchen = (props) => {
             <p className="pedido">Pedido: {props.pedido.pedido.map((item, index) =>
                 <p key={index}>{item.name}</p>
             )}</p>
-            {/* <button className={'btn-status'} onClick={handleClick}>Pedido Pronto</button> */}
+            <Button className={'btn-status'} onClick={onclick}>Pedido Pronto</Button>
         </div>
     )
 };
