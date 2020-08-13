@@ -9,7 +9,7 @@ const Cardkitchen = (props) => {
             <p className="mesa">Mesa: {props.pedido.mesa}</p>
             <p className="cliente">Cliente: {props.pedido.client}</p>
             <p className="pedido">Pedido: {props.pedido.pedido.map((item, index) =>
-                <p key={index}>{item.name}</p>
+                <p key={index}>{item.name} X {item.count}</p>
             )}</p>
             <Button className={'btn-status'} onClick={onclick}>Pedido Pronto</Button>
         </div>
@@ -17,8 +17,3 @@ const Cardkitchen = (props) => {
 };
 
 export default Cardkitchen;
-// Kitchen(props) {
-//     const {client, name} = props
-//     }
-//     Kitche ( {pedidosState} ) {
-//     }

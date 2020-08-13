@@ -20,33 +20,19 @@ const Kitchen = () => {
                         ...doc.data()
                     })
                 })
-                console.log(pedding)//deletar console
                 setOrders(pedding)
             })
     }, [])
 
-    const ordersStatus = doc => {
-        firebase.
-            firestore()
-            .collection("pedidos")
-            .doc(doc.id)
-            .update({
-                status: "Entregue"
-            });
-        setOrders(pedido.filter(item => item.id !== doc.id));
-    };
-
-
     return (
         <main className='main-kitchen'>
             <Button onclick={logout} name='Sair' />
-            <h1>Kitchen</h1>
+            <h1>Pedidos em Preparo</h1>
             <div className="lista-de-pedidos">
                 {orders.map((item, index) =>
                     <Card key={index} pedido={item} pedidosState={orders} />
                 )}
             </div>
-            {/* <button  className={'btn-status'} onClick={props.handleClick}>Marcar como Pronto</button> */}
         </main>
     )
 }
