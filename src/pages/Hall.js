@@ -51,10 +51,6 @@ const Hall = () => {
             setProduct([...product]);
         }
     }
-    // const hamburguerType = () =>{
-    //     const type = document.querySelector('.burger-type')
-    //     type.style.display = 'block'
-    // }
 
     const mostrarPedidos = item =>{
         setProduct([...product, item]);
@@ -94,7 +90,6 @@ const Hall = () => {
                     {listMenuAllDay && listMenuAllDay.hamburguer.map(itemMenu => (
                         <div key={itemMenu.name}> 
                             <ButtonHall className='btn-itens' name={itemMenu.name} price={itemMenu.price} 
-                            // onclick={()=>hamburguerType()}
                             onclick={()=>monitorarQuantidade(itemMenu)}
                             onChange={(event) => setProduct(event.target.value)}/> 
                         </div>
@@ -150,21 +145,6 @@ const Hall = () => {
                     </div>
                 ))}
             </div>
-            <form className='burger-type'>
-                <label htmlFor='radio-hall' >
-                    <Input name='burger-type' type='radio' value='Carne bovina'/>
-                    Carne bovina
-                </label>
-                <label htmlFor='radio-hall' >
-                    <Input name='burger-type' type='radio' value='Frango'/>
-                    Frango
-                </label>
-                <label htmlFor='radio-hall' >
-                    <Input name='burger-type' type='radio' value='Vegetariano'/>
-                    Vegetariano
-                </label>
-                <ButtonHall className='btn-menu' name='Enviar'/>
-            </form>
         </main>
     )
 };
