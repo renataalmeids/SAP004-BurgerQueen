@@ -28,12 +28,12 @@ const Hall = () => {
     const updateOrder = () =>{
         if(client && table != null){
             firebase.firestore().collection('pedidos').add({
-                date: new Date().toLocaleString("pt-BR"),
                 client: client,
                 mesa: table,
                 pedido:product,
                 status: 'Em preparo',
-                total: `R$${total},00`
+                total: `R$${total},00`,
+                date: new Date().toLocaleString("pt-BR"),
             });
             alert(`Olá, o pedido do cliente ${client} da mesa ${table} foi finalizado com sucesso.`)
             setProduct([]);
