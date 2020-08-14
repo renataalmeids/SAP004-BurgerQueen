@@ -51,6 +51,7 @@ const Hall = () => {
             setProduct([...product]);
         }
     };
+
     const mostrarPedidos = item =>{
         setProduct([...product, item]);
         monitorarQuantidade(item);
@@ -147,21 +148,6 @@ const Hall = () => {
                 ))}
                 <p>Total:R${total},00</p>
             </div>
-            <form className='burger-type'>
-                <label htmlFor='radio-hall' >
-                    <Input name='burgerType' type='radio' value='Carne bovina'/>
-                    Carne bovina
-                </label>
-                <label htmlFor='radio-hall' >
-                    <Input name='burgerType' type='radio' value='Frango'/>
-                    Frango
-                </label>
-                <label htmlFor='radio-hall' >
-                    <Input name='burgerType' type='radio' value='Vegetariano'/>
-                    Vegetariano
-                </label>
-                <ButtonHall className='btn-menu' name='Enviar'/>
-            </form>
         </main>
     )
 };
