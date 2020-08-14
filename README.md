@@ -36,7 +36,7 @@ Foi desenvolvido um protótipo de alta fidelidade, porém ao decorrer das sprint
 
 ## 4. Implementações futuras
 
-Nas próximas versões: o garçom/garçonete poderá escolher tipo de hamburguer(bovino, frango ou vegetariano), o chef poderá ver a ordem que os pedidos são feitos e o tempo de preparo, também queremos deixar a aplicação offline e implementar testes.
+Nas próximas versões: o garçom/garçonete poderá escolher tipo de hamburguer(bovino, frango ou vegetariano), o chef poderá ver o tempo de preparo, também queremos deixar a aplicação offline e implementar testes.
 
 ## 5. Ferramentas utilizadas
 
