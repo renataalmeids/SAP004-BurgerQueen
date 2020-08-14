@@ -12,6 +12,7 @@ const Hall = () => {
     const [product, setProduct] = useState([]);
     const [listMenuBreakfast, setListMenuBreakfast] = useState(null);
     const [listMenuAllDay, setListMenuAllDay] = useState(null);
+    const total = product.reduce((total, item)=> total+item.price*item.count,0);
     
     const logout = () => {firebase.auth().signOut();}
     const renderAllDay = () =>{
@@ -25,20 +26,22 @@ const Hall = () => {
         })
     };
     const updateOrder = () =>{
-        if(client && table != null){
-            firebase.firestore().collection('pedidos').add({
-                client: client,
-                mesa: table,
-                pedido:product,
-                status: 'Em preparo'
-            });
-            alert(`Olá, o pedido do cliente ${client} da mesa ${table} foi finalizado com sucesso.`);
-            setProduct([]);
-            setTable('');
-            setClient('');
+        if(client !== '' && table !== ''){
+                firebase.firestore().collection('pedidos').add({
+                    date: new Date().toLocaleString("pt-BR"),
+                    client: client,
+                    mesa: table,
+                    pedido:product,
+                    status: 'Em preparo',
+                    total: `R$${total},00`,
+                });
+                alert(`Olá, o pedido do cliente ${client} da mesa ${table} foi finalizado com sucesso.`)
+                setProduct([]);
+                setTable('');
+                setClient('');
         }
         else{
-            alert('Por favor, insira o nome da mesa e do cliente');
+            alert('Por favor, insira o nome do cliente e o número da mesa');
         }
     };
     const monitorarQuantidade = item =>{
@@ -68,67 +71,65 @@ const Hall = () => {
             }
         }
     };
-    const total = product.reduce((total, item)=> total+item.price*item.count,0);
     return (
         <main className='main-hall'>
             <nav className='nav-hall'>
                 <Button onclick={logout} className='btn-sair' name='Sair'/>
                 <hr></hr>
             </nav>
-            
-            <div className='entire-menu'>
+            <div className='content'>
+                <div className='entire-menu'>
+                    <div className='itens-all-day'>
+                        <Button className='btn-menu' name='Menu All Day' onclick={renderAllDay}/>
+                        {listMenuAllDay && listMenuAllDay.bebidas.map(itemMenu => (
+                            <div key={itemMenu.name}> 
+                                <ButtonHall className='btn-itens' name={itemMenu.name} price={itemMenu.price}
+                                onclick={()=>mostrarPedidos(itemMenu)}
+                                onChange={(event) => setProduct(event.target.value)}/>  
+                            </div>
+                        ))}
 
-                <div className='itens-all-day'>
-                    <Button className='btn-menu' name='Menu All Day' onclick={renderAllDay}/>
-                    {listMenuAllDay && listMenuAllDay.bebidas.map(itemMenu => (
-                        <div key={itemMenu.name}> 
-                            <ButtonHall className='btn-itens' name={itemMenu.name} price={itemMenu.price}
-                            onclick={()=>mostrarPedidos(itemMenu)}
-                            onChange={(event) => setProduct(event.target.value)}/>  
-                        </div>
-                    ))}
+                        {listMenuAllDay && listMenuAllDay.hamburguer.map(itemMenu => (
+                            <div key={itemMenu.name}> 
+                                <ButtonHall className='btn-itens' name={itemMenu.name} price={itemMenu.price} 
+                                onclick={()=>monitorarQuantidade(itemMenu)}
+                                onChange={(event) => setProduct(event.target.value)}/> 
+                            </div>
+                        ))}
+                        
+                        {listMenuAllDay && listMenuAllDay.acompanhamentos.map(itemMenu => (
+                            <div key={itemMenu.name}> 
+                                <ButtonHall className='btn-itens' name={itemMenu.name} price={itemMenu.price}
+                                onclick={()=>mostrarPedidos(itemMenu)}
+                                onChange={(event) => setProduct(event.target.value)}/> 
+                            </div>
+                        ))}
 
-                    {listMenuAllDay && listMenuAllDay.hamburguer.map(itemMenu => (
-                        <div key={itemMenu.name}> 
-                            <ButtonHall className='btn-itens' name={itemMenu.name} price={itemMenu.price} 
-                            onclick={()=>monitorarQuantidade(itemMenu)}
-                            onChange={(event) => setProduct(event.target.value)}/> 
-                        </div>
-                    ))}
-                    
-                    {listMenuAllDay && listMenuAllDay.acompanhamentos.map(itemMenu => (
-                        <div key={itemMenu.name}> 
-                            <ButtonHall className='btn-itens' name={itemMenu.name} price={itemMenu.price}
-                            onclick={()=>mostrarPedidos(itemMenu)}
-                            onChange={(event) => setProduct(event.target.value)}/> 
-                        </div>
-                    ))}
+                    </div>
+
+                    <div className='itens-breakfast'>
+                        <Button className='btn-menu' name='Menu Breakfast' onclick={renderBreakfast}/>
+                        {listMenuBreakfast && listMenuBreakfast.bebida.map(itemMenu => (
+                            <div key={itemMenu.name}> 
+                                <ButtonHall className='btn-itens' name={itemMenu.name} price={itemMenu.price} 
+                                onclick={()=>mostrarPedidos(itemMenu)}
+                                onChange={(event) => setProduct(event.target.value)}/> 
+                            </div>
+                        ))}
+
+                        {listMenuBreakfast && listMenuBreakfast.comidas.map(itemMenu => (
+                            <div key={itemMenu.name}> 
+                                <ButtonHall className='btn-itens' name={itemMenu.name} price={itemMenu.price}
+                                onclick={()=>mostrarPedidos(itemMenu)}
+                                onChange={(event) => setProduct(event.target.value)}/> 
+                            </div>
+                        ))}
+
+                    </div>
 
                 </div>
 
-                <div className='itens-breakfast'>
-                    <Button className='btn-menu' name='Menu Breakfast' onclick={renderBreakfast}/>
-                    {listMenuBreakfast && listMenuBreakfast.bebida.map(itemMenu => (
-                        <div key={itemMenu.name}> 
-                            <ButtonHall className='btn-itens' name={itemMenu.name} price={itemMenu.price} 
-                            onclick={()=>mostrarPedidos(itemMenu)}
-                            onChange={(event) => setProduct(event.target.value)}/> 
-                        </div>
-                    ))}
-
-                    {listMenuBreakfast && listMenuBreakfast.comidas.map(itemMenu => (
-                        <div key={itemMenu.name}> 
-                            <ButtonHall className='btn-itens' name={itemMenu.name} price={itemMenu.price}
-                            onclick={()=>mostrarPedidos(itemMenu)}
-                            onChange={(event) => setProduct(event.target.value)}/> 
-                        </div>
-                    ))}
-
-                </div>
-
-            </div>
-
-            <div className='order'>
+                <div className='order'>
                 <p className='title-order'>Pedido</p>
                 <label htmlFor='input-client'>
                     Cliente:
@@ -148,6 +149,7 @@ const Hall = () => {
                     </div>
                 ))}
                 <p>Total:R${total},00</p>
+            </div>
             </div>
         </main>
     )
