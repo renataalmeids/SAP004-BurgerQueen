@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import firebase from '../config/Config';
 import Button from '../components/Button';
 import Card from '../components/Card';
+import './Kitchen.css';
 
 
 
@@ -26,8 +27,8 @@ const Kitchen = () => {
 
     return (
         <main className='main-kitchen'>
-            <Button onclick={logout} name='Sair' />
-            <h1>Pedidos em Preparo</h1>
+            <Button onclick={logout} className='btn-sair'name='Sair' />
+            <h1 className='title-kitchen-order'>Pedidos em Preparo</h1>
             <div className="lista-de-pedidos">
                 {orders.map((item, index) =>
                     <Card key={index} pedido={item} pedidosState={orders} />
