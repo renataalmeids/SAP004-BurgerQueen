@@ -51,6 +51,7 @@ const Hall = () => {
             setProduct([...product]);
         }
     };
+
     const mostrarPedidos = item =>{
         setProduct([...product, item]);
         monitorarQuantidade(item);
