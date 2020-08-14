@@ -13,7 +13,6 @@ const Hall = () => {
     const [listMenuBreakfast, setListMenuBreakfast] = useState(null);
     const [listMenuAllDay, setListMenuAllDay] = useState(null);
     const total = product.reduce((total, item)=> total+item.price*item.count,0);
-    // const divALert = document.querySelector('#alertPedido')
     
     const logout = () => {firebase.auth().signOut();}
     const renderAllDay = () =>{
@@ -37,7 +36,6 @@ const Hall = () => {
                 total: `R$${total},00`
             });
             alert(`Olá, o pedido do cliente ${client} da mesa ${table} foi finalizado com sucesso.`)
-            // divALert.textContent = `Olá, o pedido do cliente ${client} da mesa ${table} foi finalizado com sucesso.`;
             setProduct([]);
             setTable('');
             setClient('');

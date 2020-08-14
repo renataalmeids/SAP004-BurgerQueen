@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import firebase from '../config/Config';
 
-
-
 const Cardkitchen = (props) => {
     const [status, setStatus] = useState(props.pedido.status);
     const handleClick = (pedido) => {
