@@ -30,7 +30,8 @@ const Hall = () => {
             firebase.firestore().collection('pedidos').add({
                 client: client,
                 mesa: table,
-                pedido:product
+                pedido:product,
+                status: 'Em preparo'
             });
             alert(`Olá, o pedido do cliente ${client} da mesa ${table} foi finalizado com sucesso.`);
             setProduct([]);
