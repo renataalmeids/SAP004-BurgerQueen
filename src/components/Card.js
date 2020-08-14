@@ -15,8 +15,8 @@ const Cardkitchen = (props) => {
 
     return (
         <div className="cardKitchen">
-            <p className="mesa">Mesa: {props.pedido.mesa}</p>
-            <p className="cliente">Cliente: {props.pedido.client}</p>
+            <p className="table">Mesa: {props.pedido.mesa}</p>
+            <p className="client">Cliente: {props.pedido.client}</p>
             <p className="status-pedding">Status: {status}</p>
             <div className="pedido">Pedido: {props.pedido.pedido.map((item, index) =>
                 <p key={index}>{item.name} X {item.count}</p>
