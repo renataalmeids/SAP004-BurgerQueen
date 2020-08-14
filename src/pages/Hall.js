@@ -13,7 +13,6 @@ const Hall = () => {
     const [listMenuBreakfast, setListMenuBreakfast] = useState(null);
     const [listMenuAllDay, setListMenuAllDay] = useState(null);
     
-    
     const logout = () => {firebase.auth().signOut();}
     const renderAllDay = () =>{
         firebase.firestore().collection('menu-p-dia').onSnapshot(itemMenu=>{
@@ -30,7 +29,7 @@ const Hall = () => {
             firebase.firestore().collection('pedidos').add({
                 client: client,
                 mesa: table,
-                pedido:product
+                pedido:product,
             });
             alert(`Olá, o pedido do cliente ${client} da mesa ${table} foi finalizado com sucesso.`);
             setProduct([]);
@@ -38,10 +37,11 @@ const Hall = () => {
             setClient('');
         }
         else{
-            alert('Por favor, insira o nome da mesa e do cliente')
+            alert('Por favor, insira o nome da mesa e do cliente');
         }
-    }
+    };
     const monitorarQuantidade = item =>{
+        console.log(item.price)
         if(!product.includes(item)){
             item.count = 1;
             setProduct([...product, item]);
@@ -50,28 +50,23 @@ const Hall = () => {
             item.count++;
             setProduct([...product]);
         }
-    }
-    // const hamburguerType = () =>{
-    //     const type = document.querySelector('.burger-type')
-    //     type.style.display = 'block'
-    // }
-
+    };
     const mostrarPedidos = item =>{
         setProduct([...product, item]);
         monitorarQuantidade(item);
-    }
-    const delOrder = item =>{
+    };
+    const delOrder = item => {
         if (product.includes(item)) {
             item.count--;
             setProduct([...product])
-            if (item.count === 0) {
+            if (item.count <= 0) {
                 product.splice(product.indexOf(item), 1);
                 setProduct([...product])
                 console.log(item.count, product, item);
             }
         }
-    }
-
+    };
+    const total = product.reduce((total, item)=> total+item.price*item.count,0);
     return (
         <main className='main-hall'>
             <nav className='nav-hall'>
@@ -94,12 +89,11 @@ const Hall = () => {
                     {listMenuAllDay && listMenuAllDay.hamburguer.map(itemMenu => (
                         <div key={itemMenu.name}> 
                             <ButtonHall className='btn-itens' name={itemMenu.name} price={itemMenu.price} 
-                            // onclick={()=>hamburguerType()}
                             onclick={()=>monitorarQuantidade(itemMenu)}
                             onChange={(event) => setProduct(event.target.value)}/> 
                         </div>
                     ))}
-
+                    
                     {listMenuAllDay && listMenuAllDay.acompanhamentos.map(itemMenu => (
                         <div key={itemMenu.name}> 
                             <ButtonHall className='btn-itens' name={itemMenu.name} price={itemMenu.price}
@@ -136,31 +130,34 @@ const Hall = () => {
                 <p className='title-order'>Pedido</p>
                 <label htmlFor='input-client'>
                     Cliente:
-                    <Input type='text' name='input-client' value={client} onChange={(event) => setClient(event.target.value)}/>
+                    <Input type='text' className='input-pedido' name='input-client' value={client} 
+                    onChange={(event) => setClient(event.target.value)}/>
                 </label>
                 <label htmlFor='input-client'>
                     Mesa:
-                    <Input type='number' name='input-client' value={table} onChange={(event) => setTable(event.target.value)}/>
+                    <Input type='number' className='input-pedido' name='input-client' value={table} 
+                    onChange={(event) => setTable(event.target.value)}/>
                 </label>
                 <Button className='btn-order' onclick={updateOrder} name='Finalizar Pedido'/>
                 {product && product.map(order => (
                     <div key={order.name} id={order.id}> 
-                        <p>{order.name} {order.price} {order.count}</p> 
+                        <p>{order.name} R${order.price},00 X {order.count}</p> 
                         <Button key={order.name} className='btn-del' onclick={()=>delOrder(order)} name='🗑️'/> 
                     </div>
                 ))}
+                <p>Total:R${total},00</p>
             </div>
             <form className='burger-type'>
                 <label htmlFor='radio-hall' >
-                    <Input name='burger-type' type='radio' value='Carne bovina'/>
+                    <Input name='burgerType' type='radio' value='Carne bovina'/>
                     Carne bovina
                 </label>
                 <label htmlFor='radio-hall' >
-                    <Input name='burger-type' type='radio' value='Frango'/>
+                    <Input name='burgerType' type='radio' value='Frango'/>
                     Frango
                 </label>
                 <label htmlFor='radio-hall' >
-                    <Input name='burger-type' type='radio' value='Vegetariano'/>
+                    <Input name='burgerType' type='radio' value='Vegetariano'/>
                     Vegetariano
                 </label>
                 <ButtonHall className='btn-menu' name='Enviar'/>
