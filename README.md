@@ -15,7 +15,7 @@
 
 O projeto tinha como objetivo a criação de uma hamburgueria, o consumo de APIs e de um banco de dados. Na nossa interface temos um ambiente de Salão, destinado ao garçom/garçonete que trabalha no salão anotando os pedidos, e Cozinha, destinado aos chefs que recebem os pedidos a serem feitos.
 
-Você pode acessar nossa aplicação por aqui: [Buguer-Queen](`https://burger-queen-407c9.web.app/`)
+Você pode acessar nossa aplicação por aqui: [Buguer-Queen](https://burger-queen-407c9.web.app/)
 
 Para utilizar a aplicação você pode utilizar os seguintes perfis:
 
