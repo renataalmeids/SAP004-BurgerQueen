@@ -45,3 +45,36 @@ label{
     background-color: lightgray;
     display: none;
 }
+@media only screen and (max-width: 700px) { 
+    .main-hall, button, label{
+        font-size: 20px;
+    }
+    .entire-menu{
+        display: block;
+        margin: 15px;
+    }
+    .btn-sair{
+        width: 150px;
+        height: 50px;
+        font-size: 20px;
+    }
+    .btn-itens{
+        width: 400px;
+        height: 50px;
+        margin: 2px 0px 2px 0px;
+    }
+    .btn-menu{
+        width: 400px;
+        height: 50px;
+        background-color: #f95d599e;
+    }
+    .order{
+        width: 800px;
+        height: 200px;
+    }
+    .input-pedido{
+        width: 200px;
+        height: 20px;
+        border: solid #f95e5959 1px;
+    }
+}
