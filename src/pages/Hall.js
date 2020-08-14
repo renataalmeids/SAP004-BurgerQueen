@@ -12,6 +12,8 @@ const Hall = () => {
     const [product, setProduct] = useState([]);
     const [listMenuBreakfast, setListMenuBreakfast] = useState(null);
     const [listMenuAllDay, setListMenuAllDay] = useState(null);
+    const total = product.reduce((total, item)=> total+item.price*item.count,0);
+    // const divALert = document.querySelector('#alertPedido')
     
     const logout = () => {firebase.auth().signOut();}
     const renderAllDay = () =>{
@@ -27,12 +29,15 @@ const Hall = () => {
     const updateOrder = () =>{
         if(client && table != null){
             firebase.firestore().collection('pedidos').add({
+                date: new Date().toLocaleString("pt-BR"),
                 client: client,
                 mesa: table,
                 pedido:product,
-                status: 'Em preparo'
+                status: 'Em preparo',
+                total: `R$${total},00`
             });
-            alert(`Olá, o pedido do cliente ${client} da mesa ${table} foi finalizado com sucesso.`);
+            alert(`Olá, o pedido do cliente ${client} da mesa ${table} foi finalizado com sucesso.`)
+            // divALert.textContent = `Olá, o pedido do cliente ${client} da mesa ${table} foi finalizado com sucesso.`;
             setProduct([]);
             setTable('');
             setClient('');
@@ -68,14 +73,13 @@ const Hall = () => {
             }
         }
     };
-    const total = product.reduce((total, item)=> total+item.price*item.count,0);
     return (
         <main className='main-hall'>
             <nav className='nav-hall'>
                 <Button onclick={logout} className='btn-sair' name='Sair'/>
                 <hr></hr>
             </nav>
-            
+            <div id='alertPedido'></div>
             <div className='entire-menu'>
 
                 <div className='itens-all-day'>
