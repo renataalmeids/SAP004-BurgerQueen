@@ -57,7 +57,15 @@ main{
 .itens-breakfast, .itens-all-day{
     margin: $margin-menu;
 }
-.btn-menu, .btn-itens, .btn-order{
+.btn-menu{
+    color: white;
+    background-color: #3bab5ab5;
+    border-radius: $border-radius;
+    margin: $margin-itens;
+    width: $width-btn;
+    height: $height-btn;
+}
+.btn-itens, .btn-order{
     width: $width-btn;
     height: $height-btn;
     background-color: $btn-bg-color;
