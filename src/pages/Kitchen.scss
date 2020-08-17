@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates&display=swap');
+$myFont: 'Montserrat Alternates';
+$color: #8e2724;
+$text-align: center;
+$breakpoint-tablet: 768px;
+$border-radius: 10px;
+$gradient: linear-gradient(-360deg,#8e2724,#3bab5ab5);
+
+.main-kitchen {
+    text-align: $text-align;
+    background:$gradient;
+}
+
+.title-kitchen-order{
+    text-align: $text-align;
+    color: white;
+    border-radius: $border-radius;
+}
+
+.btn-sair-kitchen {
+    background-color: $color;
+    border-radius: $border-radius;
+    width: 70px;
+    height: 30px;
+    color: white;
+    display: block;
+}
+
+/*botão coma as informações do pedido mesa cliene status*/
+.cardKitchen {
+    background-color: whitesmoke;
+    width: 250px;
+    height: 400px;
+    display: inline-block;
+    margin: 10px 10px;
+    text-align: center;
+    align-items: center;
+    padding: 10px;
+    border-radius: $border-radius;
+}
+
+/*contem a lista de pedidos*/
+.lista-de-pedidos {
+    padding: 30px;
+    display: inline-block;
+    border-radius: $border-radius;
+    display: flex;
+    align-items: center ;
+} 
+
+.btn-status{
+    margin: 5px;
+    width: 130px;
+    height: 40px;
+    background-color: #8e2724;
+    color: white;
+    font-size: large;
+    font-size: 15px;
+    border-radius: $border-radius;
+} 
+
+@media (min-width: $breakpoint-tablet) {
+
+}
