@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates&display=swap');
+$myFont: 'Montserrat Alternates';
+$color: #8e2724;
+$breakpoint-tablet: 768px;
+$btn-bg-color: #8e2724;
+$width-btn: 230px;
+$height-btn: 30px;
+$width-order: 450px;
+$margin-menu: 0px 5px 0px 5px;
+$margin-itens: 2px 0px 2px 0px;
+$border-radius: 5px;
+$gradient: linear-gradient(-360deg,#8e2724,#3bab5ab5);
+$padding-container: 5px 100px 50px 100px;
+$input-width: 230px;
+$input-height: 25px;
+
+button, input{
+    border: none;
+}
+label{
+    font-size: 15px;
+}
+main{
+    font-family: $myFont;
+    height: 100%;
+}
+.main-hall{
+    text-align: center;
+    padding: $padding-container;
+    background: $gradient;
+}
+.input-pedido{
+    width: $input-width;
+    height: $input-height;
+    margin: 5px 0px 5px 0px;
+    border: solid 1px $color;
+    border-radius: $border-radius;
+}
+.btn-del{
+    background: none;
+}
+.btn-sair{
+    background-color: $color;
+    border-radius: $border-radius;
+    width: 70px;
+    height: $height-btn;
+    color: white;
+}
+.content{
+    padding: 10px;
+    display: inline-block;
+    background-color: white;
+}
+.entire-menu{
+    display: inline-flex;
+}
+.itens-breakfast, .itens-all-day{
+    margin: $margin-menu;
+}
+.btn-menu, .btn-itens, .btn-order{
+    width: $width-btn;
+    height: $height-btn;
+    background-color: $btn-bg-color;
+    border-radius: $border-radius;
+    margin: $margin-itens;
+    color: white;
+}
+.order{
+    width: $width-order;
+    height: auto;
+}
+
+@media (min-width: $breakpoint-tablet) {
+    .content{
+        display: inline-flex;
+        padding: 45px 50px 45px 50px;
+    }
+}

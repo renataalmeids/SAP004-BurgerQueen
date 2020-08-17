@@ -4,7 +4,7 @@ import Button from './Button';
 
 const Form = (props) => {
     return (
-        <form>
+        <form className='form-login'>
             <label htmlFor='email'>
             <Input className='input input-email' placeholder='Email:' type= 'email' onChange={props.onChangeEmail} />
             </label>

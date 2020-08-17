@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates&display=swap');
+$width-logo: 400px;
+$height-logo: 280px;
+$breakpoint-tablet: 768px;
+$width-input: 300px;
+$height-input: 30px;
+$width-btn: 150px;
+$height-btn: 30px;
+$margin-btn: 2px;
+$width-container: 430px;
+$height-container: 430px;
+$myFont: 'Montserrat Alternates';
+$border-radius: 5px;
+$padding-container: 95px 120px 100px 150px;
+$color: #83120f;
+$gradient: linear-gradient(-360deg, #8e2724, #3bab5ab5);
+
+
+main, button{
+    font-family: $myFont;
+}
+.input{
+    width: $width-input;
+    height: $height-input;
+    margin: 5px 0px 10px 0px;
+}
+label{
+    display: block;
+}
+.main{
+    text-align: center;
+    background: $gradient;
+    padding: $padding-container;
+}
+.logo{
+    width: $width-logo;
+    height: $height-logo;
+}
+.input{
+    border: solid 1px $color;
+    border-radius: 5px;
+}
+.btn{
+    display: inline-block;
+    margin: $margin-btn;
+    width: $width-btn;
+    height: $height-btn;
+    background-color: $color;
+    border-radius: $border-radius;
+    color: white;
+}
+.container{
+    border-radius: $border-radius;
+    width: $width-container;
+    height: $height-container;
+    box-shadow: -20px 4px 7em black;
+    background-color: white;
+}
+
+@media (min-width: $breakpoint-tablet) {
+    .main{
+        padding: 85px 55px 110px 460px;
+    }
+}

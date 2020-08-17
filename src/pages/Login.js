@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Form from '../components/Form';
 import logo from '../burguer_queen.png';
-import '../App.css';
+import '../App.scss';
 import authErrors from '../pages/authErrors';
 import firebase from '../config/Config';
 import { useHistory } from 'react-router-dom';
@@ -32,18 +32,19 @@ const Login = () => {
 
     return (
         <main className='main'>
-            <img src={logo} alt='' className='logo'></img>
-            <Form
-                onChangeEmail={(event) => setEmail(event.target.value)}
-                onChangePassword={(event) => setPassword(event.target.value)}
-                onChangeErrorMsg={(event) => setErrorMsg(event.target.value)}
-                onclick={loginUser}
-                onclickRegister={()=>renderRegister()}
-            />
-            <div>
-                {errorMsg}
+            <div className='container'>
+                <img src={logo} alt='' className='logo'></img>
+                <Form
+                    onChangeEmail={(event) => setEmail(event.target.value)}
+                    onChangePassword={(event) => setPassword(event.target.value)}
+                    onChangeErrorMsg={(event) => setErrorMsg(event.target.value)}
+                    onclick={loginUser}
+                    onclickRegister={()=>renderRegister()}
+                />
+                <div>
+                    {errorMsg}
+                </div>
             </div>
-
         </main>
     );
 }
