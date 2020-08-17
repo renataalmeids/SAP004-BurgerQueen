@@ -12,7 +12,6 @@ const Hall = () => {
     const [product, setProduct] = useState([]);
     const [listMenuBreakfast, setListMenuBreakfast] = useState(null);
     const [listMenuAllDay, setListMenuAllDay] = useState(null);
-    const total = product.reduce((total, item)=> total+item.price*item.count,0);
     
     const logout = () => {firebase.auth().signOut();}
     const renderAllDay = () =>{
@@ -67,10 +66,10 @@ const Hall = () => {
             if (item.count <= 0) {
                 product.splice(product.indexOf(item), 1);
                 setProduct([...product])
-                console.log(item.count, product, item);
             }
         }
     };
+    const total = product.reduce((total, item)=> total+item.price*item.count,0);
     return (
         <main className='main-hall'>
             <nav className='nav-hall'>
