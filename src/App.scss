@@ -7,8 +7,8 @@ $height-input: 30px;
 $width-btn: 150px;
 $height-btn: 30px;
 $margin-btn: 2px;
-$width-container: 430px;
-$height-container: 430px;
+$width-container: 440px;
+$height-container: 445px;
 $myFont: 'Montserrat Alternates';
 $border-radius: 5px;
 $padding-container: 95px 120px 100px 150px;
@@ -59,6 +59,6 @@ label{
 
 @media (min-width: $breakpoint-tablet) {
     .main{
-        padding: 85px 55px 110px 460px;
+        padding: 85px 450px 110px 460px;
     }
 }

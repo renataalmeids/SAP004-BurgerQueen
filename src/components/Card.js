@@ -4,7 +4,7 @@ import firebase from '../config/Config';
 const Cardkitchen = (props) => {
     const [status, setStatus] = useState(props.pedido.status);
     const handleClick = (pedido) => {
-            firebase.firestore().collection('pedidos').orderBy('date', 'asc').doc(pedido.id).update({
+            firebase.firestore().collection('pedidos').doc(pedido.id).update({
             status: 'Pronto',
         })
         setStatus('Pronto');
