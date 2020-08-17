@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import firebase from '../config/Config';
 import logo from '../burguer_queen.png';
-import '../App.css';
+import './Register.scss';
 import 'firebase/firestore';
 import Button from '../components/Button';
 import Input from '../components/Input';
@@ -41,29 +41,31 @@ const SignUp = ({history}) => {
     }
 
     return (
-        <main className='main'>
-            <img src={logo} alt='' className='logo'></img>
-            <form className='form-register' onSubmit={handleSignUp}>
-                <label htmlFor='name'>
-                    <Input name='nome' type='nome' placeholder='Nome:' className='input input-nome' />
-                </label>
-                <label htmlFor='email'>
-                    <Input name='email' type='email' placeholder='Email:' className='input input-emai'/>
-                </label>
-                <label htmlFor='password'>
-                    <Input name='password' type='password' placeholder='Senha:' className='input input-senha'/>
-                </label>
-                <label htmlFor='radio-kitchen' className='radio-btn'>
-                    <Input name='department' type='radio' value='kitchen'/>
-                    Cozinha
-                </label>
-                <label htmlFor='radio-hall' className='radio-btn'>
-                    <Input name='department' type='radio' value='hall'/>
-                    Salão
-                </label>
-                <Button className='register-btn btn' name='Registrar'/>
-                <Button className='back-btn btn' name='Voltar' onclick={()=>renderBack()}/>
-            </form>
+        <main className='main-reg'>
+            <div className='container-reg'>
+                <img src={logo} alt='' className='logo'></img>
+                <form className='form-register' onSubmit={handleSignUp}>
+                    <label htmlFor='name'>
+                        <Input name='nome' type='nome' placeholder='Nome:' className='input input-nome' />
+                    </label>
+                    <label htmlFor='email'>
+                        <Input name='email' type='email' placeholder='Email:' className='input input-emai'/>
+                    </label>
+                    <label htmlFor='password'>
+                        <Input name='password' type='password' placeholder='Senha:' className='input input-senha'/>
+                    </label>
+                    <label className='radio-btn'>
+                        <Input name='department' type='radio' value='kitchen'/>
+                        Cozinha
+                    </label>
+                    <label className='radio-btn'>
+                        <Input name='department' type='radio' value='hall'/>
+                        Salão
+                    </label>
+                    <Button className='register-btn btn' name='Registrar'/>
+                    <Button className='back-btn btn' name='Voltar' onclick={()=>renderBack()}/>
+                </form>
+            </div>
         </main>
     )
 

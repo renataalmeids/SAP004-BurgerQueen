@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import firebase from './config/Config'
-import './App.css';
+import firebase from './config/Config';
+import './App.scss';
 import PrivateRoute from "./pages/PrivateRoute";
 import {
   BrowserRouter as Router,

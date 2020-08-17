@@ -3,7 +3,7 @@ import firebase from '../config/Config';
 import ButtonHall from '../components/ButtonHall';
 import Button from '../components/Button';
 import Input from '../components/Input';
-import './Hall.css';
+import './Hall.scss';
 
 
 const Hall = () => {
@@ -77,80 +77,82 @@ const Hall = () => {
                 <Button onclick={logout} className='btn-sair' name='Sair'/>
                 <hr></hr>
             </nav>
-            <div className='content'>
-                <div className='entire-menu'>
-                    <div className='itens-all-day'>
-                        <Button className='btn-menu' name='Menu All Day' onclick={renderAllDay}/>
-                        {listMenuAllDay && listMenuAllDay.bebidas.map(itemMenu => (
-                            <div key={itemMenu.name}> 
-                                <ButtonHall className='btn-itens' name={itemMenu.name} price={itemMenu.price}
-                                onclick={()=>mostrarPedidos(itemMenu)}
-                                onChange={(event) => setProduct(event.target.value)}/>  
-                            </div>
-                        ))}
+            <section className='sec-hall'>
+                <div className='content'>
+                    <div className='entire-menu'>
+                        <div className='itens-all-day'>
+                            <Button className='btn-menu' name='Menu All Day' onclick={renderAllDay}/>
+                            {listMenuAllDay && listMenuAllDay.bebidas.map(itemMenu => (
+                                <div key={itemMenu.name}> 
+                                    <ButtonHall className='btn-itens' name={itemMenu.name} price={itemMenu.price}
+                                    onclick={()=>mostrarPedidos(itemMenu)}
+                                    onChange={(event) => setProduct(event.target.value)}/>  
+                                </div>
+                            ))}
 
-                        {listMenuAllDay && listMenuAllDay.hamburguer.map(itemMenu => (
-                            <div key={itemMenu.name}> 
-                                <ButtonHall className='btn-itens' name={itemMenu.name} price={itemMenu.price} 
-                                onclick={()=>monitorarQuantidade(itemMenu)}
-                                onChange={(event) => setProduct(event.target.value)}/> 
-                            </div>
-                        ))}
-                        
-                        {listMenuAllDay && listMenuAllDay.acompanhamentos.map(itemMenu => (
-                            <div key={itemMenu.name}> 
-                                <ButtonHall className='btn-itens' name={itemMenu.name} price={itemMenu.price}
-                                onclick={()=>mostrarPedidos(itemMenu)}
-                                onChange={(event) => setProduct(event.target.value)}/> 
-                            </div>
-                        ))}
+                            {listMenuAllDay && listMenuAllDay.hamburguer.map(itemMenu => (
+                                <div key={itemMenu.name}> 
+                                    <ButtonHall className='btn-itens' name={itemMenu.name} price={itemMenu.price} 
+                                    onclick={()=>monitorarQuantidade(itemMenu)}
+                                    onChange={(event) => setProduct(event.target.value)}/> 
+                                </div>
+                            ))}
+                            
+                            {listMenuAllDay && listMenuAllDay.acompanhamentos.map(itemMenu => (
+                                <div key={itemMenu.name}> 
+                                    <ButtonHall className='btn-itens' name={itemMenu.name} price={itemMenu.price}
+                                    onclick={()=>mostrarPedidos(itemMenu)}
+                                    onChange={(event) => setProduct(event.target.value)}/> 
+                                </div>
+                            ))}
+
+                        </div>
+
+                        <div className='itens-breakfast'>
+                            <Button className='btn-menu' name='Menu Breakfast' onclick={renderBreakfast}/>
+                            {listMenuBreakfast && listMenuBreakfast.bebida.map(itemMenu => (
+                                <div key={itemMenu.name}> 
+                                    <ButtonHall className='btn-itens' name={itemMenu.name} price={itemMenu.price} 
+                                    onclick={()=>mostrarPedidos(itemMenu)}
+                                    onChange={(event) => setProduct(event.target.value)}/> 
+                                </div>
+                            ))}
+
+                            {listMenuBreakfast && listMenuBreakfast.comidas.map(itemMenu => (
+                                <div key={itemMenu.name}> 
+                                    <ButtonHall className='btn-itens' name={itemMenu.name} price={itemMenu.price}
+                                    onclick={()=>mostrarPedidos(itemMenu)}
+                                    onChange={(event) => setProduct(event.target.value)}/> 
+                                </div>
+                            ))}
+
+                        </div>
 
                     </div>
 
-                    <div className='itens-breakfast'>
-                        <Button className='btn-menu' name='Menu Breakfast' onclick={renderBreakfast}/>
-                        {listMenuBreakfast && listMenuBreakfast.bebida.map(itemMenu => (
-                            <div key={itemMenu.name}> 
-                                <ButtonHall className='btn-itens' name={itemMenu.name} price={itemMenu.price} 
-                                onclick={()=>mostrarPedidos(itemMenu)}
-                                onChange={(event) => setProduct(event.target.value)}/> 
-                            </div>
-                        ))}
-
-                        {listMenuBreakfast && listMenuBreakfast.comidas.map(itemMenu => (
-                            <div key={itemMenu.name}> 
-                                <ButtonHall className='btn-itens' name={itemMenu.name} price={itemMenu.price}
-                                onclick={()=>mostrarPedidos(itemMenu)}
-                                onChange={(event) => setProduct(event.target.value)}/> 
-                            </div>
-                        ))}
-
-                    </div>
-
+                    <div className='order'>
+                    <p className='title-order'>Pedido</p>
+                    <label htmlFor='input-client'>
+                        Cliente:
+                        <Input type='text' className='input-pedido' name='input-client' value={client} 
+                        onChange={(event) => setClient(event.target.value)}/>
+                    </label>
+                    <label htmlFor='input-client'>
+                        Mesa:
+                        <Input type='number' className='input-pedido' name='input-client' value={table} 
+                        onChange={(event) => setTable(event.target.value)}/>
+                    </label>
+                    <Button className='btn-order' onclick={updateOrder} name='Finalizar Pedido'/>
+                    {product && product.map(order => (
+                        <div key={order.name} id={order.id} className='item-order'> 
+                            <p>{order.name} R${order.price},00 X {order.count}</p> 
+                            <Button key={order.name} className='btn-del' onclick={()=>delOrder(order)} name='🗑️'/> 
+                        </div>
+                    ))}
+                    <p>Total:R${total},00</p>
                 </div>
-
-                <div className='order'>
-                <p className='title-order'>Pedido</p>
-                <label htmlFor='input-client'>
-                    Cliente:
-                    <Input type='text' className='input-pedido' name='input-client' value={client} 
-                    onChange={(event) => setClient(event.target.value)}/>
-                </label>
-                <label htmlFor='input-client'>
-                    Mesa:
-                    <Input type='number' className='input-pedido' name='input-client' value={table} 
-                    onChange={(event) => setTable(event.target.value)}/>
-                </label>
-                <Button className='btn-order' onclick={updateOrder} name='Finalizar Pedido'/>
-                {product && product.map(order => (
-                    <div key={order.name} id={order.id}> 
-                        <p>{order.name} R${order.price},00 X {order.count}</p> 
-                        <Button key={order.name} className='btn-del' onclick={()=>delOrder(order)} name='🗑️'/> 
-                    </div>
-                ))}
-                <p>Total:R${total},00</p>
-            </div>
-            </div>
+                </div>
+            </section>
         </main>
     )
 };
